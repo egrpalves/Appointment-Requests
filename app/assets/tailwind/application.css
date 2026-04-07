@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f0f9f7;
+  --color-brand-100: #dcf2ed;
+  --color-brand-200: #bbe5db;
+  --color-brand-300: #8dd3c3;
+  --color-brand-400: #58baa4;
+  --color-brand-500: #1ab394;
+  --color-brand-600: #159178;
+  --color-brand-700: #137562;
+  --color-brand-800: #135d50;
+  --color-brand-900: #124d43;
+}
+
+@font-face {
+  font-family: Geomanist;
+  src:
+    url(https://cdn.prod.website-files.com/651149b4877f98f4d7cf8a6d/65114a68b86986a5ca5f3afd_Geomanist-ExtraLight-Italic.otf)
+      format("opentype"),
+    url(https://cdn.prod.website-files.com/651149b4877f98f4d7cf8a6d/65114a69b082e8d7ca2b455c_Geomanist-ExtraLight.otf)
+      format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}

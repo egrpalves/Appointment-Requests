@@ -1,0 +1,54 @@
+en:
+  app_name: "Appointment Requests"
+  search:
+    title: "Find your nutritionist"
+    placeholder_query: "Name, service, online appointment…"
+    placeholder_location: "Location (default: Braga)"
+    button: "Search"
+    results_count:
+      one: "Showing 1 of 1 nutritionist"
+      other: "Showing %{shown} of %{total} nutritionists"
+    no_results: "No nutritionists found."
+    sorted_by_distance: "Sorted by distance"
+  nutritionist:
+    schedule_button: "Schedule appointment"
+    website_button: "Website"
+    more_services:
+      one: "+1 more service"
+      other: "+%{count} more services"
+  appointment_modal:
+    title: "Schedule an appointment"
+    subtitle: "with %{name}"
+    guest_name: "Your name"
+    guest_email: "Email address"
+    service: "Service"
+    datetime: "Preferred date & time"
+    cancel: "Cancel"
+    submit: "Send request"
+    submitting: "Sending…"
+    success_title: "Request sent!"
+    success_body: "Your appointment request has been submitted. You'll receive an email once the nutritionist responds."
+    success_button: "Done"
+  dashboard:
+    title: "Pending Requests"
+    subtitle: "Accept or reject new pending requests"
+    viewing_as: "Viewing as:"
+    no_requests: "No %{status} requests"
+    no_requests_hint:
+      pending: "New appointment requests will appear here."
+      other: "There are no %{status} requests yet."
+    filters:
+      pending: "Pending"
+      accepted: "Accepted"
+      rejected: "Rejected"
+  request_card:
+    service_label: "Service"
+    accept: "Accept"
+    reject: "Reject"
+    confirm_accept: "Accept this request?"
+    confirm_reject: "Reject this request?"
+    yes: "Yes"
+    no: "No"
+  nav:
+    professional_cta: "Are you a nutrition professional? Get to know our software →"
+    back_to_search: "← Back to search"

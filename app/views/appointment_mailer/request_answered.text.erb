@@ -1,0 +1,17 @@
+Hello <%= @guest_name %>,
+
+<% if @status == "accepted" %>
+Your appointment with <%= @nutritionist.name %> has been confirmed.
+Date & Time: <%= @requested_at %>
+
+We look forward to seeing you!
+<% else %>
+We're sorry to inform you that your appointment request with <%= @nutritionist.name %>
+for <%= @requested_at %> has been declined.
+
+You can visit the platform to search for another nutritionist or request a new appointment.
+<% end %>
+
+---
+Nutrium – Connecting patients with nutrition professionals.
+

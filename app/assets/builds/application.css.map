@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../stylesheets/application.tailwind.css"],
+  "sourcesContent": ["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer base {\n  html {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n  }\n}\n\n@layer utilities {\n  .line-clamp-2 {\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical;\n    overflow: hidden;\n  }\n}\n"],
+  "mappings": ";AAAA,UAAU;AACV,UAAU;AACV,UAAU;AAEV;AACE;AACE,4BAAwB;AACxB,6BAAyB;AAC3B;AACF;AAEA;AACE,GAAC;AACC,aAAS;AACT,wBAAoB;AACpB,wBAAoB;AACpB,cAAU;AACZ;AACF;",
+  "names": []
+}

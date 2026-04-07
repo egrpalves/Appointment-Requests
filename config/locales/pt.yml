@@ -1,0 +1,54 @@
+pt:
+  app_name: "Marcação de consultas"
+  search:
+    title: "Encontre o seu nutricionista"
+    placeholder_query: "Nome, serviço, consulta online…"
+    placeholder_location: "Localização (padrão: Braga)"
+    button: "Pesquisar"
+    results_count:
+      one: "A mostrar 1 de 1 nutricionista"
+      other: "A mostrar %{shown} de %{total} nutricionistas"
+    no_results: "Nenhum nutricionista encontrado."
+    sorted_by_distance: "Ordenado por distância"
+  nutritionist:
+    schedule_button: "Agendar consulta"
+    website_button: "Website"
+    more_services:
+      one: "+1 serviço adicional"
+      other: "+%{count} serviços adicionais"
+  appointment_modal:
+    title: "Agendar uma consulta"
+    subtitle: "com %{name}"
+    guest_name: "O seu nome"
+    guest_email: "Endereço de email"
+    service: "Serviço"
+    datetime: "Data e hora preferida"
+    cancel: "Cancelar"
+    submit: "Enviar pedido"
+    submitting: "A enviar…"
+    success_title: "Pedido enviado!"
+    success_body: "O seu pedido de consulta foi submetido. Receberá um email assim que o nutricionista responder."
+    success_button: "Concluído"
+  dashboard:
+    title: "Pedidos Pendentes"
+    subtitle: "Aceitar ou recusar novos pedidos"
+    viewing_as: "A ver como:"
+    no_requests: "Sem pedidos %{status}"
+    no_requests_hint:
+      pending: "Novos pedidos de consulta aparecerão aqui."
+      other: "Ainda não existem pedidos %{status}."
+    filters:
+      pending: "Pendentes"
+      accepted: "Aceites"
+      rejected: "Recusados"
+  request_card:
+    service_label: "Serviço"
+    accept: "Aceitar"
+    reject: "Recusar"
+    confirm_accept: "Aceitar este pedido?"
+    confirm_reject: "Recusar este pedido?"
+    yes: "Sim"
+    no: "Não"
+  nav:
+    professional_cta: "É profissional de nutrição? Conheça o nosso software →"
+    back_to_search: "← Voltar à pesquisa"

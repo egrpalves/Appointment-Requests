@@ -1,0 +1,67 @@
+{
+  "app_name": "Appointment Requests",
+  "search": {
+    "title": "Find your nutritionist",
+    "placeholder_query": "Name, service, online appointment…",
+    "placeholder_location": "Location (default: Braga)",
+    "button": "Search",
+    "results_count_one": "Showing 1 of 1 nutritionist",
+    "results_count_other": "Showing {{shown}} of {{total}} nutritionists",
+    "no_results": "No nutritionists found.",
+    "sorted_by_distance": "Sorted by distance"
+  },
+  "nutritionist": {
+    "schedule_button": "Schedule appointment",
+    "website_button": "Webpage",
+    "website_button_title": "Personal page – coming soon",
+    "more_services_one": "+1 more service",
+    "more_services_other": "+{{count}} more services",
+    "show_less": "Show less ↑",
+    "min": "min",
+    "km_away": "{{distance}} km away"
+  },
+  "appointment_modal": {
+    "title": "Schedule an appointment",
+    "subtitle": "with {{name}}",
+    "guest_name": "Your name",
+    "guest_name_placeholder": "Full name",
+    "guest_email": "Email address",
+    "guest_email_placeholder": "you@example.com",
+    "guest_email_help": "Only one pending appointment request can exist per email at a time. Submitting a new request will invalidate any earlier pending request for the same email.",
+    "service": "Service",
+    "datetime": "Preferred date & time",
+    "cancel": "Cancel",
+    "submit": "Send request",
+    "error_generic": "Something went wrong. Please try again.",
+    "error_pending_exists": "A pending appointment request already exists for this email. Please try again in a moment or use a different email address.",
+    "success_title": "Request sent!",
+    "success_body": "Your appointment request has been submitted and is now pending. You'll receive an email once the nutritionist responds.",
+    "success_button": "Done"
+  },
+  "dashboard": {
+    "title": "Pending Requests",
+    "subtitle": "Accept or reject new pending requests",
+    "viewing_as": "Viewing as:",
+    "back_to_search": "← Back to search",
+    "no_requests": "No {{status}} requests",
+    "no_requests_hint_pending": "New appointment requests will appear here.",
+    "no_requests_hint_other": "There are no {{status}} requests yet.",
+    "filters": {
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    }
+  },
+  "request_card": {
+    "service_label": "Service",
+    "accept": "Accept",
+    "reject": "Reject",
+    "confirm_accept": "Accept this request?",
+    "confirm_reject": "Reject this request?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "professional_cta": "Are you a nutrition professional? Get to know our software →"
+  }
+}

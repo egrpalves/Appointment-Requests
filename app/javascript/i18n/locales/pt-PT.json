@@ -1,0 +1,67 @@
+{
+  "app_name": "Marcação de consultas",
+  "search": {
+    "title": "Encontre o seu nutricionista",
+    "placeholder_query": "Nome, serviço, consulta online…",
+    "placeholder_location": "Localização (padrão: Braga)",
+    "button": "Pesquisar",
+    "results_count_one": "A mostrar 1 de 1 nutricionista",
+    "results_count_other": "A mostrar {{shown}} de {{total}} nutricionistas",
+    "no_results": "Nenhum nutricionista encontrado.",
+    "sorted_by_distance": "Ordenado por distância"
+  },
+  "nutritionist": {
+    "schedule_button": "Agendar consulta",
+    "website_button": "Website",
+    "website_button_title": "Página pessoal – em breve",
+    "more_services_one": "+1 serviço adicional",
+    "more_services_other": "+{{count}} serviços adicionais",
+    "show_less": "Mostrar menos ↑",
+    "min": "min",
+    "km_away": "{{distance}} km away"
+  },
+  "appointment_modal": {
+    "title": "Agendar uma consulta",
+    "subtitle": "com {{name}}",
+    "guest_name": "O seu nome",
+    "guest_name_placeholder": "Nome completo",
+    "guest_email": "Endereço de email",
+    "guest_email_placeholder": "voce@exemplo.com",
+    "guest_email_help": "Apenas um pedido de consulta pendente pode existir por email de cada vez. Submeter um novo pedido irá invalidar qualquer pedido pendente anterior para o mesmo email.",
+    "service": "Serviço",
+    "datetime": "Data e hora preferida",
+    "cancel": "Cancelar",
+    "submit": "Enviar pedido",
+    "error_generic": "Algo correu mal. Tente novamente.",
+    "error_pending_exists": "Já existe um pedido de consulta pendente para este email. Tente novamente dentro de momentos ou use um endereço de email diferente.",
+    "success_title": "Pedido enviado!",
+    "success_body": "O seu pedido de consulta foi submetido e está agora pendente. Receberá um email assim que o nutricionista responder.",
+    "success_button": "Concluído"
+  },
+  "dashboard": {
+    "title": "Pedidos Pendentes",
+    "subtitle": "Aceitar ou recusar novos pedidos",
+    "viewing_as": "A ver como:",
+    "back_to_search": "← Voltar à pesquisa",
+    "no_requests": "Sem pedidos {{status}}",
+    "no_requests_hint_pending": "Novos pedidos de consulta aparecerão aqui.",
+    "no_requests_hint_other": "Ainda não existem pedidos {{status}}.",
+    "filters": {
+      "pending": "Pendentes",
+      "accepted": "Aceites",
+      "rejected": "Recusados"
+    }
+  },
+  "request_card": {
+    "service_label": "Serviço",
+    "accept": "Aceitar",
+    "reject": "Recusar",
+    "confirm_accept": "Aceitar este pedido?",
+    "confirm_reject": "Recusar este pedido?",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "nav": {
+    "professional_cta": "É profissional de nutrição? Conheça o nosso software →"
+  }
+}

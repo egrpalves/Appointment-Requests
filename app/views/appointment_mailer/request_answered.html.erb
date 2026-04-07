@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="header">
+    <h1>Nutrium</h1>
+  </div>
+  <div class="body">
+    <p>Hello <strong><%= @guest_name %></strong>,</p>
+
+    <% if @status == "accepted" %>
+      <p>
+        Great news! Your appointment with <strong><%= @nutritionist.name %></strong>
+        has been <span style="color:#27a35d;font-weight:600;">confirmed</span>.
+      </p>
+      <p>
+        <strong>Date &amp; Time:</strong> <%= @requested_at %>
+      </p>
+      <p>We look forward to seeing you. Please make sure to arrive on time.</p>
+    <% else %>
+      <p>
+        We're sorry to let you know that your appointment request with
+        <strong><%= @nutritionist.name %></strong> for
+        <strong><%= @requested_at %></strong> has been
+        <span style="color:#ef4444;font-weight:600;">declined</span>.
+      </p>
+      <p>
+        You can visit the platform at any time to search for another nutritionist
+        or request a new appointment.
+      </p>
+    <% end %>
+  </div>
+  <div class="footer">
+    You received this email because you submitted an appointment request on Nutrium.
+    This is an automated message, please do not reply.
+  </div>
+</div>
+
