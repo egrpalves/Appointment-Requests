@@ -55,6 +55,8 @@ A small Rails + React app for searching nutritionists, requesting appointments, 
 
 ## Running tests
 
+### Backend tests
+
 Run the full test suite:
 
 ```bash
@@ -68,6 +70,42 @@ bundle exec rspec spec/models/appointment_request_spec.rb
 bundle exec rspec spec/services/appointment_requests/accept_request_spec.rb
 bundle exec rspec spec/requests/api/appointment_requests_spec.rb
 ```
+
+### React tests
+
+Run all React component tests:
+
+```bash
+npm test
+```
+
+Run tests in watch mode:
+
+```bash
+npm test -- --watch
+```
+
+Run tests for a specific component:
+
+```bash
+npm test -- --testPathPattern=Button.test.jsx
+```
+
+Run tests with coverage report:
+
+```bash
+npm test -- --coverage
+```
+
+**Test framework:** Jest with React Testing Library
+**Test files location:** `app/javascript/components/**/*.test.jsx`
+**Coverage:** 100 tests covering all 27 React components including:
+- Button, Logo, AppHeader, LanguageSelector, Pagination
+- AppointmentModal components (Form, Header, Overlay, etc.)
+- NutritionistCard components (Avatar, Header, Bio, Services, etc.)
+- SearchApp components (SearchBar, SearchResults, etc.)
+- DashboardApp components (NutritionistSelector, RequestList, etc.)
+- RequestCard components (Avatar, Info, Actions)
 
 ## Important routes
 

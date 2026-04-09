@@ -23,7 +23,10 @@ const RequestList = ({ requests, loading, statusFilter, onAction }) => {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <div className="w-10 h-10 border-4 border-brand-200 border-t-brand-500 rounded-full animate-spin" />
+        <div
+          role="status"
+          className="w-10 h-10 border-4 border-brand-200 border-t-brand-500 rounded-full animate-spin"
+        />
       </div>
     );
   }
