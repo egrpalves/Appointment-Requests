@@ -11,6 +11,13 @@
   --color-brand-700: #137562;
   --color-brand-800: #135d50;
   --color-brand-900: #124d43;
+
+  --color-button-primary: oklch(80% 30% 50deg);
+  --color-button-primary-hover: oklch(80% 30% 50deg / 75%);
+  --color-button-primary-text: oklch(100% 10% 30deg);
+  --color-button-secondary: oklch(96% 8% 171deg);
+  --color-button-secondary-text: oklch(72% 27% 173deg);
+  --color-button-secondary-disabled: oklch(96% 8% 171deg / 75%);
 }
 
 @font-face {

@@ -22,7 +22,7 @@
   },
   "appointment_modal": {
     "title": "Agendar uma consulta",
-    "subtitle": "com {{name}}",
+    "subtitle": "com {{name}} - {{ specialty }}",
     "guest_name": "O seu nome",
     "guest_name_placeholder": "Nome completo",
     "guest_email": "Endereço de email",

@@ -1,10 +1,10 @@
-import React, { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import Button from '../Button';
-import NutritionistAvatar from './NutritionistAvatar';
-import NutritionistHeader from './NutritionistHeader';
-import NutritionistBio from './NutritionistBio';
-import NutritionistServices from './NutritionistServices';
+import React, { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import Button from "../Button";
+import NutritionistAvatar from "./NutritionistAvatar";
+import NutritionistHeader from "./NutritionistHeader";
+import NutritionistBio from "./NutritionistBio";
+import NutritionistServices from "./NutritionistServices";
 
 const NutritionistCard = memo(({ nutritionist, onSchedule }) => {
   const { t } = useTranslation();
@@ -25,17 +25,17 @@ const NutritionistCard = memo(({ nutritionist, onSchedule }) => {
         <NutritionistServices services={services} />
       </div>
 
-      <div className="flex sm:flex-col gap-2 shrink-0 self-start sm:self-center">
+      <div className="w-full sm:w-auto flex flex-col gap-2 shrink-0 self-start sm:self-center">
         <Button
           onClick={handleScheduleClick}
           style="primary"
-          label={t('nutritionist.schedule_button')}
+          label={t("nutritionist.schedule_button")}
         />
         <Button
-          disabled
-          label={t('nutritionist.website_button')}
-          style="secondary-disabled"
-          title={t('nutritionist.website_button_title')}
+          label={t("nutritionist.website_button")}
+          style="secondary"
+          title={t("nutritionist.website_button_title")}
+          isDisabled={true}
         />
       </div>
     </div>

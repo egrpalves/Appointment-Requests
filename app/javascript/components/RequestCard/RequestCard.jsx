@@ -11,7 +11,7 @@ export default function RequestCard({
   const { guest_name } = request;
 
   return (
-    <div className="bg-white rounded-2xl shadow-card p-5 flex flex-col sm:flex-row gap-4">
+    <div className="bg-white rounded-2xl shadow-card p-5 flex flex-wrap gap-4">
       <RequestAvatar guestName={guest_name} />
 
       <RequestInfo request={request} />

@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
-import { STATUS_STYLES, formatDate } from '../../utils.js';
+import { useTranslation } from "react-i18next";
+import { STATUS_STYLES, formatDate } from "../../utils.js";
 
 export default function RequestInfo({ request }) {
   const { t } = useTranslation();
   const { guest_name, guest_email, requested_at, status, service } = request;
   return (
-    <div className="flex-1 min-w-0">
+    <div className="flex-1 min-w-fit">
       <div className="flex flex-wrap items-center gap-2 mb-1">
         <span className="font-semibold text-slate-800">{guest_name}</span>
         <span
@@ -20,8 +20,8 @@ export default function RequestInfo({ request }) {
       {service && (
         <p className="text-sm text-slate-600 mb-1">
           <span className="font-medium">
-            {t('request_card.service_label')}:
-          </span>{' '}
+            {t("request_card.service_label")}:
+          </span>{" "}
           {service.name}
           {service.location && (
             <span className="text-slate-400"> · {service.location}</span>

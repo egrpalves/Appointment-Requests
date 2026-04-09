@@ -22,7 +22,7 @@
   },
   "appointment_modal": {
     "title": "Schedule an appointment",
-    "subtitle": "with {{name}}",
+    "subtitle": "with {{name}} - {{ specialty }}",
     "guest_name": "Your name",
     "guest_name_placeholder": "Full name",
     "guest_email": "Email address",

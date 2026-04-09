@@ -5,7 +5,7 @@ const Logo = memo(() => {
       <img
         src="/logo.png"
         alt="Nutrium"
-        className="h-8 w-auto brightness-0 invert"
+        className="h-8 w-fit brightness-0 invert"
       />
     </a>
   );

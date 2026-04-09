@@ -61,6 +61,7 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "faker"
   gem "kaminari"
+  gem "letter_opener"
 end
 
 group :development do

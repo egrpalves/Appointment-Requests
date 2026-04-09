@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import NutritionistServiceItem from './NutritionistServiceItem';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import NutritionistServiceItem from "./NutritionistServiceItem";
 
 export default function NutritionistServices({ services }) {
   const { t } = useTranslation();
@@ -17,15 +17,15 @@ export default function NutritionistServices({ services }) {
       {services.length > 2 && (
         <button
           onClick={() => setExpanded((v) => !v)}
-          className="mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium"
+          className="mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium cursor-pointer"
         >
           {expanded
-            ? t('nutritionist.show_less')
+            ? t("nutritionist.show_less")
             : t(
                 services.length - 2 === 1
-                  ? 'nutritionist.more_services_one'
-                  : 'nutritionist.more_services_other',
-                { count: services.length - 2 }
+                  ? "nutritionist.more_services_one"
+                  : "nutritionist.more_services_other",
+                { count: services.length - 2 },
               )}
         </button>
       )}

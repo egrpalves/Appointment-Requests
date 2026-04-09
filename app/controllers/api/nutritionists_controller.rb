@@ -5,10 +5,14 @@ module Api
     def index
       page = (params[:page]).to_i || 1
       limit = (params[:limit]).to_i || 3
+      all = params[:all].to_s === "true"
+
+      # Allows to fetch all nutritionists for testing /dashboard view
+      location = all ? nil : params[:location].presence || "Braga"
 
       nutritionists = Nutritionist.search(
         query: params[:query],
-        location: params[:location].presence || "Braga",
+        location: location,
         lat: params[:lat],
         lng: params[:lng]
       )

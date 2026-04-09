@@ -28,7 +28,7 @@ export const api = {
   },
 
   getAllNutritionists: () => {
-    return fetchJSON("/nutritionists");
+    return fetchJSON("/nutritionists?all=true");
   },
 
   createAppointment: (payload) =>

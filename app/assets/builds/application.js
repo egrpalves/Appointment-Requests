@@ -24629,7 +24629,7 @@ var api = {
     return fetchJSON(`/nutritionists?${qs}`);
   },
   getAllNutritionists: () => {
-    return fetchJSON("/nutritionists");
+    return fetchJSON("/nutritionists?all=true");
   },
   createAppointment: (payload) => fetchJSON("/appointment_requests", {
     method: "POST",
@@ -24765,18 +24765,18 @@ var Logo = (0, import_react14.memo)(() => {
     {
       src: "/logo.png",
       alt: "Nutrium",
-      className: "h-8 w-auto brightness-0 invert"
+      className: "h-8 w-fit brightness-0 invert"
     }
   ));
 });
 var Logo_default = Logo;
 
 // app/javascript/components/AppHeader.jsx
-var AppHeader = ({ linkHref, linkLabel }) => /* @__PURE__ */ React.createElement("header", { className: "bg-brand-500 sticky top-0 z-40 shadow-sm" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between" }, /* @__PURE__ */ React.createElement(Logo_default, null), /* @__PURE__ */ React.createElement(
+var AppHeader = ({ linkHref, linkLabel }) => /* @__PURE__ */ React.createElement("header", { className: "bg-brand-500 sticky top-0 z-40 shadow-sm" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4 flex-wrap" }, /* @__PURE__ */ React.createElement(Logo_default, null), /* @__PURE__ */ React.createElement(
   "a",
   {
     href: linkHref,
-    className: "text-sm text-white hover:text-brand-800 transition-colors"
+    className: "text-sm text-white hover:text-brand-800 flex-1 text-center min-w-20"
   },
   linkLabel
 ), /* @__PURE__ */ React.createElement(LanguageSelector, null)));
@@ -24784,34 +24784,34 @@ var AppHeader_default = AppHeader;
 
 // app/javascript/components/Button.jsx
 var import_react15 = __toESM(require_react());
-var Button = (0, import_react15.memo)(({ label, onClick, style, title, customClass }) => {
-  let buttonStyle = "";
-  switch (style) {
-    case "primary":
-      buttonStyle = "cursor-pointer text-white bg-orange-400 hover:bg-orange-300";
-      break;
-    case "secondary":
-      buttonStyle = "cursor-pointer text-white bg-brand-400 hover:bg-brand-300";
-      break;
-    case "secondary-disabled":
-      buttonStyle = "bg-brand-300 text-white cursor-not-allowed";
-      break;
-    case "outline":
-      buttonStyle = "cursor-pointer text-brand-400 border border-brand-400 hover:bg-brand-50";
-      break;
-    default:
-      break;
+var Button = (0, import_react15.memo)(
+  ({ label, onClick, style, title, customClass, isDisabled }) => {
+    let buttonStyle = "";
+    switch (style) {
+      case "primary":
+        buttonStyle = "cursor-pointer text-button-primary-text bg-button-primary hover:bg-button-primary-hover";
+        break;
+      case "secondary":
+        buttonStyle = "cursor-pointer text-button-secondary-text bg-button-secondary hover:bg-brand-300 disabled:bg-button-secondary-disabled disabled:cursor-not-allowed";
+        break;
+      case "outline":
+        buttonStyle = "cursor-pointer text-brand-400 border border-brand-400 hover:bg-brand-50";
+        break;
+      default:
+        break;
+    }
+    return /* @__PURE__ */ React.createElement(
+      "button",
+      {
+        onClick,
+        className: `w-full px-6 py-3 font-semibold rounded-lg text-sm shadow-sm ${buttonStyle} ${customClass}`,
+        title,
+        disabled: isDisabled
+      },
+      label
+    );
   }
-  return /* @__PURE__ */ React.createElement(
-    "button",
-    {
-      onClick,
-      className: `w-full px-6 py-3 font-semibold rounded-xl transition-colors text-sm shadow-sm ${buttonStyle} ${customClass}`,
-      title
-    },
-    label
-  );
-});
+);
 var Button_default = Button;
 
 // app/javascript/components/SearchApp/SearchBar.jsx
@@ -24865,7 +24865,7 @@ var SearchBar = ({
   onLocate
 }) => {
   const { t: t2 } = useTranslation();
-  return /* @__PURE__ */ React.createElement("section", { className: "bg-brand-500 border-b border-slate-100" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-6xl mx-auto px-4 sm:px-6 py-6" }, /* @__PURE__ */ React.createElement("h1", { className: "font-display text-3xl text-white mb-5" }, t2("search.title")), /* @__PURE__ */ React.createElement("div", { className: "flex flex-col sm:flex-row gap-3" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 relative" }, /* @__PURE__ */ React.createElement("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" }, /* @__PURE__ */ React.createElement(SearchIcon, null)), /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("section", { className: "bg-brand-500 border-b border-slate-100 sticky top-16" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-6xl mx-auto px-4 sm:px-6 py-6" }, /* @__PURE__ */ React.createElement("h1", { className: "font-display text-3xl text-white mb-5" }, t2("search.title")), /* @__PURE__ */ React.createElement("div", { className: "flex flex-col sm:flex-row gap-3" }, /* @__PURE__ */ React.createElement("div", { className: "flex-1 relative" }, /* @__PURE__ */ React.createElement("span", { className: "absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" }, /* @__PURE__ */ React.createElement(SearchIcon, null)), /* @__PURE__ */ React.createElement(
     "input",
     {
       type: "text",
@@ -24960,7 +24960,7 @@ function NutritionistServices({ services }) {
     "button",
     {
       onClick: () => setExpanded((v) => !v),
-      className: "mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium"
+      className: "mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium cursor-pointer"
     },
     expanded ? t2("nutritionist.show_less") : t2(
       services.length - 2 === 1 ? "nutritionist.more_services_one" : "nutritionist.more_services_other",
@@ -24976,7 +24976,7 @@ var NutritionistCard = (0, import_react18.memo)(({ nutritionist, onSchedule }) =
   const handleScheduleClick = (0, import_react18.useCallback)(() => {
     onSchedule(nutritionist);
   }, [nutritionist, onSchedule]);
-  return /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-200 p-5 flex flex-col sm:flex-row gap-5" }, /* @__PURE__ */ import_react18.default.createElement(NutritionistAvatar, { photoUrl: photo_url, name }), /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ import_react18.default.createElement(NutritionistHeader, { name, specialty }), bio && /* @__PURE__ */ import_react18.default.createElement(NutritionistBio, { bio }), /* @__PURE__ */ import_react18.default.createElement(NutritionistServices, { services })), /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex sm:flex-col gap-2 shrink-0 self-start sm:self-center" }, /* @__PURE__ */ import_react18.default.createElement(
+  return /* @__PURE__ */ import_react18.default.createElement("div", { className: "bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-shadow duration-200 p-5 flex flex-col sm:flex-row gap-5" }, /* @__PURE__ */ import_react18.default.createElement(NutritionistAvatar, { photoUrl: photo_url, name }), /* @__PURE__ */ import_react18.default.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ import_react18.default.createElement(NutritionistHeader, { name, specialty }), bio && /* @__PURE__ */ import_react18.default.createElement(NutritionistBio, { bio }), /* @__PURE__ */ import_react18.default.createElement(NutritionistServices, { services })), /* @__PURE__ */ import_react18.default.createElement("div", { className: "w-full sm:w-auto flex flex-col gap-2 shrink-0 self-start sm:self-center" }, /* @__PURE__ */ import_react18.default.createElement(
     Button_default,
     {
       onClick: handleScheduleClick,
@@ -24986,16 +24986,17 @@ var NutritionistCard = (0, import_react18.memo)(({ nutritionist, onSchedule }) =
   ), /* @__PURE__ */ import_react18.default.createElement(
     Button_default,
     {
-      disabled: true,
       label: t2("nutritionist.website_button"),
-      style: "secondary-disabled",
-      title: t2("nutritionist.website_button_title")
+      style: "secondary",
+      title: t2("nutritionist.website_button_title"),
+      isDisabled: true
     }
   )));
 });
 var NutritionistCard_default = NutritionistCard;
 
 // app/javascript/components/Pagination.jsx
+var ARROW_BUTTON_CLASS = "w-9 h-9 rounded-xl flex items-center justify-center text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer";
 function Pagination({ meta, onPageChange }) {
   const { page, total_pages } = meta;
   if (total_pages <= 1) return null;
@@ -25011,7 +25012,7 @@ function Pagination({ meta, onPageChange }) {
       {
         onClick: () => onPageChange(page - 1),
         disabled: page === 1,
-        className: "w-9 h-9 rounded-xl flex items-center justify-center text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        className: ARROW_BUTTON_CLASS
       },
       "\u2039"
     ),
@@ -25020,7 +25021,7 @@ function Pagination({ meta, onPageChange }) {
       {
         key: p,
         onClick: () => onPageChange(p),
-        className: `w-9 h-9 rounded-xl text-sm font-medium transition-colors ${p === page ? "bg-brand-500 text-white shadow-sm" : "text-slate-600 hover:bg-slate-100"}`
+        className: `w-9 h-9 rounded-xl text-sm font-medium cursor-pointer ${p === page ? "bg-button-secondary text-button-secondary-text shadow-sm" : "text-slate-600 hover:bg-slate-100"}`
       },
       p
     )),
@@ -25029,7 +25030,7 @@ function Pagination({ meta, onPageChange }) {
       {
         onClick: () => onPageChange(page + 1),
         disabled: page === total_pages,
-        className: "w-9 h-9 rounded-xl flex items-center justify-center text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        className: ARROW_BUTTON_CLASS
       },
       "\u203A"
     )
@@ -25152,6 +25153,7 @@ var AppointmentForm = ({
     "input",
     {
       type: "email",
+      inputMode: "email",
       required: true,
       value: form.guest_email,
       onChange: (e2) => onChange("guest_email", e2.target.value),
@@ -25259,7 +25261,8 @@ var AppointmentModal = (0, import_react20.memo)(({ nutritionist, onClose }) => {
       {
         title: t2("appointment_modal.title"),
         subtitle: t2("appointment_modal.subtitle", {
-          name: nutritionist.name
+          name: nutritionist.name,
+          specialty: nutritionist.specialty
         }),
         onClose
       }
@@ -25382,7 +25385,7 @@ var NutritionistSelector = ({
   onFilterChange
 }) => {
   const { t: t2 } = useTranslation();
-  return /* @__PURE__ */ React.createElement("div", { className: "bg-white rounded-2xl shadow-card p-4 mb-6 flex flex-col sm:flex-row sm:items-center gap-3" }, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium text-slate-700 whitespace-nowrap" }, t2("dashboard.viewing_as")), /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "bg-white rounded-2xl shadow-card p-4 mb-6 flex flex-wrap flex-col sm:flex-row sm:items-center gap-3" }, /* @__PURE__ */ React.createElement("label", { className: "text-sm font-medium text-slate-700 whitespace-nowrap" }, t2("dashboard.viewing_as")), /* @__PURE__ */ React.createElement(
     "select",
     {
       value: selectedId ?? "",
@@ -25390,12 +25393,12 @@ var NutritionistSelector = ({
       className: "flex-1 px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 bg-white cursor-pointer"
     },
     nutritionists.map((n) => /* @__PURE__ */ React.createElement("option", { key: n.id, value: n.id }, n.name, " \u2013 ", n.specialty))
-  ), /* @__PURE__ */ React.createElement("div", { className: "flex gap-1 bg-slate-100 p-1 rounded-xl" }, FILTERS.map((f) => /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React.createElement("div", { className: "flex gap-1 bg-slate-100 p-1 rounded-lg" }, FILTERS.map((f) => /* @__PURE__ */ React.createElement(
     "button",
     {
       key: f,
       onClick: () => onFilterChange(f),
-      className: `px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-colors cursor-pointer ${statusFilter === f ? "bg-white text-brand-600 shadow-sm" : "text-slate-500 hover:text-slate-700"}`
+      className: `w-full px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-colors cursor-pointer ${statusFilter === f ? "bg-white text-brand-600 shadow-sm" : "text-slate-500 hover:text-slate-700"}`
     },
     t2(`dashboard.filters.${f}`)
   ))));
@@ -25411,7 +25414,7 @@ function RequestAvatar({ guestName }) {
 function RequestInfo({ request }) {
   const { t: t2 } = useTranslation();
   const { guest_name, guest_email, requested_at, status, service } = request;
-  return /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-0" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap items-center gap-2 mb-1" }, /* @__PURE__ */ React.createElement("span", { className: "font-semibold text-slate-800" }, guest_name), /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "flex-1 min-w-fit" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap items-center gap-2 mb-1" }, /* @__PURE__ */ React.createElement("span", { className: "font-semibold text-slate-800" }, guest_name), /* @__PURE__ */ React.createElement(
     "span",
     {
       className: `text-xs font-medium px-2 py-0.5 rounded-full border ${STATUS_STYLES[status]}`
@@ -25445,7 +25448,7 @@ function RequestActions({ onAccept, onReject }) {
     setBusy(false);
     setConfirming(null);
   };
-  return /* @__PURE__ */ React.createElement("div", { className: "flex-shrink-0 flex sm:flex-col gap-2 self-start sm:self-center" }, confirming ? /* @__PURE__ */ React.createElement("div", { className: "flex flex-col gap-2" }, /* @__PURE__ */ React.createElement("p", { className: "text-xs text-slate-600 text-center font-semibold" }, confirming === "accepted" ? t2("request_card.confirm_accept") : t2("request_card.confirm_reject")), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-col" }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "shrink-0 flex flex-col gap-2 self-center w-full sm:w-auto" }, confirming ? /* @__PURE__ */ React.createElement("div", { className: "flex flex-col gap-2" }, /* @__PURE__ */ React.createElement("p", { className: "text-xs text-slate-600 text-center font-semibold" }, confirming === "accepted" ? t2("request_card.confirm_accept") : t2("request_card.confirm_reject")), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2 flex-col" }, /* @__PURE__ */ React.createElement(
     "button",
     {
       onClick: handleConfirm,
@@ -25486,7 +25489,7 @@ function RequestCard({
   onReject
 }) {
   const { guest_name } = request;
-  return /* @__PURE__ */ React.createElement("div", { className: "bg-white rounded-2xl shadow-card p-5 flex flex-col sm:flex-row gap-4" }, /* @__PURE__ */ React.createElement(RequestAvatar, { guestName: guest_name }), /* @__PURE__ */ React.createElement(RequestInfo, { request }), statusFilter === "pending" && /* @__PURE__ */ React.createElement(RequestActions, { onAccept, onReject }));
+  return /* @__PURE__ */ React.createElement("div", { className: "bg-white rounded-2xl shadow-card p-5 flex flex-wrap gap-4" }, /* @__PURE__ */ React.createElement(RequestAvatar, { guestName: guest_name }), /* @__PURE__ */ React.createElement(RequestInfo, { request }), statusFilter === "pending" && /* @__PURE__ */ React.createElement(RequestActions, { onAccept, onReject }));
 }
 
 // app/javascript/components/DashboardApp/RequestList.jsx
@@ -25982,7 +25985,7 @@ var en_default = {
   },
   appointment_modal: {
     title: "Schedule an appointment",
-    subtitle: "with {{name}}",
+    subtitle: "with {{name}} - {{ specialty }}",
     guest_name: "Your name",
     guest_name_placeholder: "Full name",
     guest_email: "Email address",
@@ -26051,7 +26054,7 @@ var pt_PT_default = {
   },
   appointment_modal: {
     title: "Agendar uma consulta",
-    subtitle: "com {{name}}",
+    subtitle: "com {{name}} - {{ specialty }}",
     guest_name: "O seu nome",
     guest_name_placeholder: "Nome completo",
     guest_email: "Endere\xE7o de email",

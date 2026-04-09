@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
-import Button from '../Button';
+import { useTranslation } from "react-i18next";
+import Button from "../Button";
 
 const SearchIcon = () => (
   <svg
@@ -45,7 +45,7 @@ const LocateIcon = () => (
 );
 
 const inputClass =
-  'w-full py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition';
+  "w-full py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition";
 
 const SearchBar = ({
   query,
@@ -57,10 +57,10 @@ const SearchBar = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <section className="bg-brand-500 border-b border-slate-100">
+    <section className="bg-brand-500 border-b border-slate-100 sticky top-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <h1 className="font-display text-3xl text-white mb-5">
-          {t('search.title')}
+          {t("search.title")}
         </h1>
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1 relative">
@@ -69,7 +69,7 @@ const SearchBar = ({
             </span>
             <input
               type="text"
-              placeholder={t('search.placeholder_query')}
+              placeholder={t("search.placeholder_query")}
               value={query}
               onChange={(e) => onQueryChange(e.target.value)}
               className={`${inputClass} pl-10 pr-4`}
@@ -82,7 +82,7 @@ const SearchBar = ({
             </span>
             <input
               type="text"
-              placeholder={t('search.placeholder_location')}
+              placeholder={t("search.placeholder_location")}
               value={location}
               onChange={(e) => onLocationChange(e.target.value)}
               className={`${inputClass} pl-9 pr-10`}
@@ -98,7 +98,7 @@ const SearchBar = ({
 
           <Button
             onClick={onSearch}
-            label={t('search.button')}
+            label={t("search.button")}
             style="primary"
             customClass="flex-0"
           />
