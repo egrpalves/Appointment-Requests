@@ -15,7 +15,7 @@ module Api
     end
 
     def record_not_unique(_e)
-      render json: { errors: [ "A pending appointment request already exists for this email" ] }, status: :unprocessable_entity
+      render json: { errors: [ "Record already exists" ] }, status: :unprocessable_entity
     end
   end
 end

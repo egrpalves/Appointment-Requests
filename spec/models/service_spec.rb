@@ -11,19 +11,19 @@ RSpec.describe Service, type: :model do
     it { should belong_to(:nutritionist) }
   end
 
-  describe "#as_json_with_distance" do
+  describe "#as_json" do
     let(:service) do
       build(:service, lat: 41.5518, lng: -8.4229, price: 60.0, duration_minutes: 60)
     end
 
     it "returns correct fields without coordinates" do
-      result = service.as_json_with_distance
+      result = service.as_json
       expect(result).to include(:name, :price, :location, :duration_minutes)
       expect(result[:distance_km]).to be_nil
     end
 
     it "includes distance_km when coordinates provided" do
-      result = service.as_json_with_distance(41.5518, -8.4229)
+      result = service.as_json(location_lat: 41.5518, location_lng: -8.4229)
       expect(result[:distance_km]).to eq(0.0)
     end
   end

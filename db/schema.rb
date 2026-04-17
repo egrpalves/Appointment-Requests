@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_07_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_17_160547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,8 +23,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_07_000000) do
     t.bigint "service_id", null: false
     t.string "status", default: "pending", null: false
     t.datetime "updated_at", null: false
+    t.index ["guest_email", "nutritionist_id"], name: "index_appointment_requests_on_guest_email_nutritionist_pending", unique: true, where: "((status)::text = 'pending'::text)"
     t.index ["guest_email"], name: "index_appointment_requests_on_guest_email"
-    t.index ["guest_email"], name: "index_appointment_requests_on_guest_email_pending", unique: true, where: "((status)::text = 'pending'::text)"
     t.index ["nutritionist_id", "requested_at"], name: "index_appointment_requests_on_nutritionist_id_and_requested_at"
     t.index ["nutritionist_id"], name: "index_appointment_requests_on_nutritionist_id"
     t.index ["service_id"], name: "index_appointment_requests_on_service_id"

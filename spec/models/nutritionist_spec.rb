@@ -54,4 +54,15 @@ RSpec.describe Nutritionist, type: :model do
       expect(results).to be_empty
     end
   end
+
+  describe "#as_json" do
+    let(:nutritionist) { create(:nutritionist) }
+    let!(:service) { create(:service, nutritionist: nutritionist) }
+
+    it "includes services in the output" do
+      result = nutritionist.as_json
+      expect(result[:services]).not_to be_empty
+      expect(result[:services].first[:name]).to eq(service.name)
+    end
+  end
 end

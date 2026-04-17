@@ -20,7 +20,7 @@ module AppointmentRequests
     attr_reader :appointment_request
 
     def duration
-      appointment_request.service&.duration_minutes || 60
+      appointment_request.service.duration_minutes
     end
 
     def reject_overlapping_pending_requests!
@@ -35,14 +35,13 @@ module AppointmentRequests
         .find_each do |request|
           next unless overlapping?(request, accepted_start, accepted_end)
 
-          request.update!(status: "rejected")
-          AppointmentMailer.request_answered(request).deliver_later
+          request.reject!
         end
     end
 
     def overlapping?(request, accepted_start, accepted_end)
       request_start = request.requested_at
-      request_end = request_start + (request.service&.duration_minutes || 60).minutes
+      request_end = request_start + request.service.duration_minutes.minutes
 
       request_start < accepted_end && accepted_start < request_end
     end

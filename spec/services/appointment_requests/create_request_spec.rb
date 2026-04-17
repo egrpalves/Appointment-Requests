@@ -28,4 +28,20 @@ RSpec.describe AppointmentRequests::CreateRequest, type: :model do
     expect(result.status).to eq("pending")
     expect(old_request.reload.status).to eq("rejected")
   end
+
+  it "does NOT reject pending requests for OTHER nutritionists" do
+    other_nutritionist = create(:nutritionist)
+    other_request = create(
+      :appointment_request,
+      nutritionist: other_nutritionist,
+      service: create(:service, nutritionist: other_nutritionist),
+      guest_email: "guest@example.com",
+      status: "pending"
+    )
+
+    result = described_class.new(attributes).call
+
+    expect(result).to be_persisted
+    expect(other_request.reload.status).to eq("pending")
+  end
 end

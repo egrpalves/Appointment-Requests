@@ -7,7 +7,9 @@ class Service < ApplicationRecord
   validates :location, presence: true
   validates :duration_minutes, presence: true, numericality: { greater_than: 0 }
 
-  def as_json_with_distance(lat = nil, lng = nil)
+  def as_json(options = {})
+    lat = options[:lat] || options[:location_lat]
+    lng = options[:lng] || options[:location_lng]
     data = {
       id: id,
       name: name,

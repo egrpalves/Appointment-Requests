@@ -10,7 +10,7 @@ module Api
         .where(status: params[:status] || "pending")
         .order(requested_at: :asc)
 
-      render json: requests.map { |r| serialize_request(r) }
+      render json: requests.as_json
     end
 
     # Method: POST
@@ -28,7 +28,7 @@ module Api
         create_params.merge(nutritionist: nutritionist)
       ).call
 
-      render json: serialize_request(request), status: :created
+      render json: request.as_json, status: :created
 
     rescue ActiveRecord::RecordNotFound
       render json: { error: "Nutritionist not found" }, status: :not_found
@@ -47,12 +47,11 @@ module Api
         appointment.accept!
       when "rejected"
         appointment.reject!
-        AppointmentMailer.request_answered(appointment).deliver_later
       else
         return render json: { error: "Invalid status" }, status: :unprocessable_entity
       end
 
-      render json: serialize_request(appointment)
+      render json: appointment.as_json
     end
 
     private
@@ -61,23 +60,6 @@ module Api
       params.require(:appointment_request).permit(
         :nutritionist_id, :service_id, :guest_name, :guest_email, :requested_at
       )
-    end
-
-    def serialize_request(r)
-      {
-        id: r.id,
-        guest_name: r.guest_name,
-        guest_email: r.guest_email,
-        requested_at: r.requested_at,
-        status: r.status,
-        nutritionist_id: r.nutritionist_id,
-        service: r.service ? {
-          id: r.service.id,
-          name: r.service.name,
-          location: r.service.location,
-          duration_minutes: r.service.duration_minutes
-        } : nil
-      }
     end
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe AppointmentRequest, type: :model do
     it { should validate_presence_of(:guest_email) }
     it { should validate_presence_of(:requested_at) }
     it { should belong_to(:nutritionist) }
-    it { should belong_to(:service).optional }
+    it { should belong_to(:service) }
   end
 
   describe "default status" do
@@ -19,20 +19,26 @@ RSpec.describe AppointmentRequest, type: :model do
   describe ".invalidate_pending_for" do
     let(:guest_email) { "test@example.com" }
     let(:nutritionist) { create(:nutritionist) }
+    let(:other_nutritionist) { create(:nutritionist) }
     let!(:old_request) do
       create(:appointment_request, guest_email: guest_email, status: "pending",
              nutritionist: nutritionist, service: create(:service, nutritionist: nutritionist))
     end
+    let!(:other_nutritionist_request) do
+      create(:appointment_request, guest_email: guest_email, status: "pending",
+             nutritionist: other_nutritionist, service: create(:service, nutritionist: other_nutritionist))
+    end
 
-    it "rejects existing pending requests for the same guest" do
-      AppointmentRequest.invalidate_pending_for(guest_email)
+    it "rejects existing pending requests for the same guest and nutritionist" do
+      AppointmentRequest.invalidate_pending_for(guest_email, nutritionist_id: nutritionist.id)
       expect(old_request.reload.status).to eq("rejected")
+      expect(other_nutritionist_request.reload.status).to eq("pending")
     end
 
     it "preserves the excluded request" do
       new_req = create(:appointment_request, guest_email: guest_email, status: "accepted",
                        nutritionist: nutritionist, service: create(:service, nutritionist: nutritionist))
-      AppointmentRequest.invalidate_pending_for(guest_email, except_id: new_req.id)
+      AppointmentRequest.invalidate_pending_for(guest_email, nutritionist_id: nutritionist.id, except_id: new_req.id)
       expect(old_request.reload.status).to eq("rejected")
       expect(new_req.reload.status).to eq("accepted")
     end
@@ -40,7 +46,7 @@ RSpec.describe AppointmentRequest, type: :model do
     it "does not affect accepted requests" do
       accepted = create(:appointment_request, guest_email: guest_email, status: "accepted",
                         nutritionist: nutritionist, service: create(:service, nutritionist: nutritionist))
-      AppointmentRequest.invalidate_pending_for(guest_email)
+      AppointmentRequest.invalidate_pending_for(guest_email, nutritionist_id: nutritionist.id)
       expect(accepted.reload.status).to eq("accepted")
     end
   end

@@ -6,7 +6,7 @@ class Nutritionist < ApplicationRecord
   has_many :appointment_requests, dependent: :destroy
 
   def self.search(query: nil, location: "Braga", lat: nil, lng: nil)
-    scope = joins(:services).distinct
+    scope = joins(:services).includes(:services).distinct
 
     if query.present?
       like = "%#{sanitize_sql_like(query)}%"
@@ -27,6 +27,7 @@ class Nutritionist < ApplicationRecord
       scope = Nutritionist
         .from("(#{inner_sql}) AS nutritionists")
         .select("nutritionists.*")
+        .includes(:services)
         .order("min_distance ASC")
     else
       scope = scope.order("nutritionists.name ASC")
@@ -35,7 +36,9 @@ class Nutritionist < ApplicationRecord
     scope
   end
 
-  def as_json_with_services(location_lat: nil, location_lng: nil)
+  def as_json(options = {})
+    lat = options[:location_lat]
+    lng = options[:location_lng]
     {
       id: id,
       name: name,
@@ -43,7 +46,7 @@ class Nutritionist < ApplicationRecord
       bio: bio,
       photo_url: photo_url,
       services: services.map { |s|
-        s.as_json_with_distance(location_lat, location_lng)
+        s.as_json(location_lat: lat, location_lng: lng)
       }
     }
   end

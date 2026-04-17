@@ -10,24 +10,25 @@ module AppointmentRequests
         AppointmentRequest.create!(@attributes)
       end
     rescue ActiveRecord::RecordNotUnique
-      raise ActiveRecord::RecordInvalid.new(AppointmentRequest.new),
-            "A pending appointment request already exists for this email"
+      request = AppointmentRequest.new(@attributes)
+      request.errors.add(:base, "A pending appointment request already exists for this email with this nutritionist")
+      raise ActiveRecord::RecordInvalid.new(request)
     end
 
     private
 
     attr_reader :attributes
 
+    def nutritionist_id
+      attributes[:nutritionist_id] || attributes[:nutritionist]&.id
+    end
+
     def guest_email
       attributes.fetch(:guest_email)
     end
 
     def invalidate_existing_pending_requests!
-      scope = AppointmentRequest.pending.where(guest_email: guest_email)
-      scope.lock.update_all(
-        status: "rejected",
-        updated_at: Time.current
-      )
+      AppointmentRequest.invalidate_pending_for(guest_email, nutritionist_id: nutritionist_id)
     end
   end
 end
